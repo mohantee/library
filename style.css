@@ -18,7 +18,7 @@ body {
 	color: white;
 }
 
-.add-movie-btn {
+.btn-add-book {
 	text-decoration: none;
 	color: black;
 	display: inline-flex;
@@ -27,8 +27,8 @@ body {
 	border-radius: 5px;
 }
 
-.add-movie-btn:hover,
-.add-movie-btn:focus {
+.btn-add-book:hover,
+.btn-add-book:focus {
 	background-color: orange;
 	color: white;
 }
@@ -72,8 +72,9 @@ body {
 }
 
 .chip {
+	color: white;
 	display: inline-block;
-	background-color: greenyellow;
+	background-color: rgb(0, 179, 0);
 	padding: 0.2em 0.6em;
 	margin: 0em;
 	border-radius: 100px;
@@ -82,6 +83,7 @@ body {
 .card__status {
 	margin: 0 1em 0.5em 0em;
 	margin-right: 0.3em;
+	cursor: pointer;
 }
 
 .card__pages {
@@ -92,12 +94,12 @@ body {
 
 .card--remove {
 	text-decoration: none;
-	color: black;
 	align-self: flex-start;
 	background-color: tomato;
 }
 
 .placeholder {
+	background-color: white;
 	display: flex;
 	border: 1px dashed gray;
 	align-items: center;
@@ -122,6 +124,7 @@ body {
 }
 
 .add-book-form {
+	min-width: 300px;
 	display: none;
 	padding: 1em;
 	background-color: white;
@@ -130,13 +133,14 @@ body {
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	transform: translate(-50%, -90%);
+	transform: translate(-50%, -50%);
 	backdrop-filter: opacity(20%);
 }
 
 input:nth-of-type(1),
 input:nth-of-type(2),
-input:nth-of-type(3) {
+input:nth-of-type(3),
+input:nth-of-type(4) {
 	width: 98%;
 	margin-bottom: 2em;
 }
