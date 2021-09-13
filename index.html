@@ -16,25 +16,7 @@
 			</nav>
 		</header>
 		<main>
-			<div class="container">
-				<div class="card">
-					<img
-						src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvMcdmKETbX7NBMd657EAMqBVfEqdmJS9TfnnLBuNZOzHzwm_FeAdyRQyhl2GYf2Ao8uo&usqp=CAU"
-						alt="book image"
-						class="card__img"
-					/>
-					<p class="card__title">Harry Potter and the Chamber of Secrets</p>
-					<p class="card__author">by J.K. Rowling</p>
-					<div class="card__chip">
-						<p class="card__status chip">Finished</p>
-						<p class="card__pages chip">340 pages</p>
-						<a href="#" class="card--remove chip">Remove</a>
-					</div>
-				</div>
-				<div class="card placeholder btn-add-book">
-					<a href="#" class="placeholder__symbol">+</a>
-				</div>
-			</div>
+			<div class="container"></div>
 			<div class="backdrop">
 				<form class="add-book-form modal">
 					<h2>Enter new book details</h2>
@@ -62,11 +44,10 @@
 						required
 					/><br />
 					<input
-						type="text"
+						type="url"
 						name="image-url"
 						id="image-url"
 						placeholder="Image URL"
-						required
 					/><br />
 					<p class="question">Have you read the book?</p>
 					<input
