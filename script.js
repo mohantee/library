@@ -1,7 +1,5 @@
 //DOM bindings go here
 const btnAddBook = document.querySelector('.btn-add-book');
-const btnRemoveBook = document.querySelector('.card--remove');
-const btnStatusBook = document.querySelector('.card__status');
 const modal = document.querySelector('.modal');
 const backdrop = document.querySelector('.backdrop');
 const formSubmit = document.querySelector('.btn--active');
@@ -34,14 +32,25 @@ const addBookToLibrary = book => {
 };
 
 const btnRemoveBookHandler = element => {
+	card = element.target.closest('.card');
 	for (book of myLibrary) {
-		if (element.className.includes(book.id)) {
-			element.parentElement.removeChild(element);
+		if (card.className.includes(book.id)) {
+			card.parentElement.removeChild(card);
 			const index = myLibrary.indexOf(book);
 			if (index !== -1) {
 				myLibrary.splice(index, 1);
 			}
 		}
+	}
+};
+
+const btnStatusBookHandler = e => {
+	if (e.target.textContent === 'Finished') {
+		e.target.style.backgroundColor = 'red';
+		e.target.textContent = 'Yet to read';
+	} else {
+		e.target.style.backgroundColor = 'rgb(0, 179, 0)';
+		e.target.textContent = 'Finished';
 	}
 };
 
@@ -65,23 +74,28 @@ const createNewBookCard = book => {
 	return newBookElement;
 };
 
+const bindEventListeners = newBookCard => {
+	const btnRemoveCard = newBookCard.querySelector('.card--remove');
+	btnRemoveCard.addEventListener('click', btnRemoveBookHandler);
+	const btnStatusBook = newBookCard.querySelector('.card__status');
+	btnStatusBook.addEventListener('click', btnStatusBookHandler);
+};
+
 const renderLibrary = () => {
 	container.innerHTML = `
 		<div class="card placeholder">
 			<a href="#" class="placeholder__symbol">+</a>
 		</div>
 	`;
-	container.lastElementChild.addEventListener('click', toggleModalBackdrop);
+
+	const placeholder = container.lastElementChild;
+	placeholder.addEventListener('click', toggleModalBackdrop);
+
 	myLibrary.forEach(book => {
-		const placeholder = container.lastElementChild;
 		const newBookCard = createNewBookCard(book);
 		container.insertBefore(newBookCard, placeholder);
-		newBookCard.lastElementChild.lastElementChild.addEventListener(
-			'click',
-			btnRemoveBookHandler.bind(this, newBookCard)
-		);
+		bindEventListeners(newBookCard);
 	});
-	console.log(myLibrary);
 };
 
 const toggleModalBackdrop = () => {
