@@ -66,6 +66,7 @@ const btnRemoveBookHandler = (element) => {
       }
     }
   }
+  localStorage.setItem('books', JSON.stringify(myLibrary));
 };
 
 const btnStatusBookHandler = (e) => {
